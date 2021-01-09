@@ -1,7 +1,16 @@
-const app = require("express")();
-const products = require("./data/products");
-const PORT = 5000;
+import express from "express";
+import morgan from "morgan";
+import dotenv from "dotenv";
+import Connect from "./connection/Connect.js";
+import products from "./data/products.js";
+const PORT = process.env.PORT || 5000;
 const baseUrl = `http://localhost:${PORT}`;
+
+dotenv.config();
+Connect.Db();
+const app = express();
+
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.send(products);

@@ -5,7 +5,7 @@ import Rating from "../components/Rating";
 import axios from "axios";
 
 function ProductScreen({ match }) {
-  let isFetched = useRef(false);
+  const isFetched = useRef(false);
   const [product, setProduct] = useState({});
 
   const id = match.params.id;
