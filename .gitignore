@@ -25,3 +25,4 @@ yarn-error.log*
 
 .eslintcache
 *.eslintcache
+mern-backend/node_modules

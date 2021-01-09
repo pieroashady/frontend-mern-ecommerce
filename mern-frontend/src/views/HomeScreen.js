@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
 import axios from "axios";
 
 function HomeScreen() {
+  let isFetched = useRef(false);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetchProducts();
+
+    return () => {
+      isFetched.current = true;
+    };
   }, []);
 
   async function fetchProducts() {
     const { data } = await axios.get("/api/products");
 
-    setProducts(data);
+    if (!isFetched.current) setProducts(data);
   }
 
   return (

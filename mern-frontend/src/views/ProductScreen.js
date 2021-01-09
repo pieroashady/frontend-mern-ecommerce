@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
-import products from "../products";
+import axios from "axios";
 
 function ProductScreen({ match }) {
-  const product = products.find((p) => p._id === match.params.id);
+  let isFetched = useRef(false);
+  const [product, setProduct] = useState({});
+
+  const id = match.params.id;
+
+  useEffect(() => {
+    sendRequest();
+
+    return () => {
+      isFetched.current = true;
+    };
+  });
+
+  async function sendRequest() {
+    const { data } = await axios.get(`/api/products?id=${id}`);
+
+    if (!isFetched.current) setProduct(data);
+  }
 
   return (
     <>
