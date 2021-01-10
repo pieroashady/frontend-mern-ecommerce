@@ -3,6 +3,7 @@ import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
 import axios from "axios";
+import Components from "../components/Components";
 
 function ProductScreen({ match }) {
   const isFetched = useRef(false);
@@ -39,7 +40,7 @@ function ProductScreen({ match }) {
               <h3>{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+              <Components.Rating value={product.rating} text={`${product.numReviews} reviews`} />
             </ListGroup.Item>
             <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
             <ListGroup.Item>Description: {product.description}</ListGroup.Item>

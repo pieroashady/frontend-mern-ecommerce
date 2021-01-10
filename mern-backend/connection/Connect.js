@@ -9,9 +9,9 @@ class Connect {
         useCreateIndex: true,
       });
 
-      console.log(`MongoDB connected: ${mo.connection.host}`);
+      console.log(`MongoDB connected: ${mo.connection.host}`.blue);
     } catch (error) {
-      console.error(error.message);
+      console.error(`${error.message}`.red.bold);
       process.exit(1);
     }
   }

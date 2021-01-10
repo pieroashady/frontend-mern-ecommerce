@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Col, Row } from "react-bootstrap";
 import Product from "../components/Product";
+import Components from "../components/Components";
 import axios from "axios";
 
 function HomeScreen() {
@@ -27,7 +28,7 @@ function HomeScreen() {
       <Row>
         {products.map((product) => (
           <Col key={product._id} sm={12} lg={4} xl={3}>
-            <Product product={product} />
+            <Components.Product product={product} />
           </Col>
         ))}
       </Row>

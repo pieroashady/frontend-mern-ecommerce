@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
+import colors from "colors";
 import Connect from "./connection/Connect.js";
 import products from "./data/products.js";
 const PORT = process.env.PORT || 5000;
@@ -26,4 +27,4 @@ app.get("/api/products", (req, res) => {
   res.json(product);
 });
 
-app.listen(PORT, () => console.log(`Running on ${baseUrl}`));
+app.listen(PORT, () => console.log(`Running on ${baseUrl}`.yellow.bold));
